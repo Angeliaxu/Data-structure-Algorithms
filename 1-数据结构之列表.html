@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<script type="text/javascript">
+/*1.列表中保存的元素不是太多时，不需要在长的序列中查找使或者不需要
+ *对其进行排序时可以使用列表。
+ *2.列表是一组有序的数据，每个列表中的数据项称为元素，在js中，元素
+ * 可以是任何类型的数据类型，理论上列表中的元素多少并没有限定，但是
+ * 在实际操作当中，其大小由程序内存限定。
+ *3.列表的方法：
+ * length：列表中包含元素的个数称为列表的length
+ * listSize：列表中的元素个数
+ * append:列表末尾插入元素
+ * insert：指定位置插入元素
+ * remove：删除元素
+ * clear：清空列表的所有元素
+ * toString：显示列表中所有的元素
+ * getElement；显示当前元素
+ * front：将列表的当前位置移动到第一个元素
+ * end：将列表的当前位置移动到最后一个元素
+ * prev：将当前位置前移一位
+ * next：将当前位置后移一位
+ * moveTo：指定移到某个位置
+ * hasNext：判断下一位
+ * hasPrev：判断前一位
+ * currPos：返回列表当前的位置
+ * 
+ */
+	function list(){
+		this.listSize=0;
+		this.pos=0;
+		this.dataBase=[];
+		this.clear=clear;
+		this.find=find;
+		this.toString=toString;
+		this.insert=insert;
+		this.append=append;
+		this.remove=remove;
+		this.front=front;
+		this.end=end;
+		this.prev=prev;
+		this.next=next;
+		this.hasNext;
+		this.hasPrev;
+		this.length=length;
+		this.currPos=currPos;
+		this.moveTo=moveTo;
+		this.getElement=getElement;
+		this.contains=contains;
+	}
+	function append(element){
+		this.dataBase[this.listSize++]=element;
+	}
+	function clear(){
+		delete this.dataBase;
+		this.listSize=0;
+		this.dataBase.length=0;
+		this.pos=0;
+	}
+	function find(element){
+		for(var i=0;i<this.dataBase.length;i++){
+			if(this.dataBase[i]==element){
+				return i	
+			}
+		}
+		return -1;
+	}
+	function length(){
+		return this.listSize;
+	}
+	function toString(){
+		return this.dataBase;
+	} 
+	function remove(element){
+		var index=this.find(element);
+		if(index>-1){
+			this.dataBase.splice(index,1);
+			--this.listSize;
+			return true
+		}
+		return false;
+	}
+	function insert(element,after){
+		var index=this.find(element);
+		if(index>-1){
+			this.dataBase.splice(index+1,0,element);
+			++this.listSize;
+			return true;
+		}
+		return false;
+	}
+	function contains(element){
+		for(var i=0;i<this.dataBase.length;i++){
+			if(this.dataBase[i]==element){
+				return true;
+			}
+		}
+		return false;
+		
+	}
+	function front(){
+		this.pos=0;
+	}
+	function end(){
+		this.pos=this.listSize-1;
+	}
+	function prev(){
+		--this.pos;
+	}
+	function next(){
+		if(this.pos<this.listSize){
+			++this.pos;
+		}	
+	}
+	function currPos(){
+		return this.pos;
+	}
+	function moveTo(position){
+		this.pos=position;
+	}
+	function getElement(){
+		return this.dataBase[this.pos];
+	}
+	function hasNext(){
+		return this.pos<this.listSize
+	}
+	function hasPrev(){
+		return this.pos>=0;
+	}
+	var list1=new list();
+	list1.append('格格1');
+	list1.append('格格2');
+	list1.append('格格2');
+	list1.append('格格2');
+	list1.front();
+	list1.next();
+	console.log(list1.getElement());
+	
+	</script>
+	</body>
+</html>
