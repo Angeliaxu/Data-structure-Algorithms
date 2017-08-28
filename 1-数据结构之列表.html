@@ -44,8 +44,8 @@
 		this.end=end;
 		this.prev=prev;
 		this.next=next;
-		this.hasNext;
-		this.hasPrev;
+		this.hasNext=hasNext;
+		this.hasPrev=hasPrev;
 		this.length=length;
 		this.currPos=currPos;
 		this.moveTo=moveTo;
@@ -134,12 +134,24 @@
 	var list1=new list();
 	list1.append('格格1');
 	list1.append('格格2');
-	list1.append('格格2');
-	list1.append('格格2');
+	list1.append('格格3');
+	list1.append('格格4');
 	list1.front();
 	list1.next();
-	console.log(list1.getElement());
-	
+//	console.log(list1.getElement());
+	/*使用迭代器访问列表
+	 front(),end(),prev(),next()和currPos()，
+	 
+	 *优点：访问列表元素时不必要关心底层的数据存储结构
+	 * 
+	 * 使用迭代器遍历列表的列子
+	 * */
+	for(list1.front();list1.hasNext();list1.next()){
+		console.log(list1.getElement());
+	}
+	for(list1.end();list1.hasPrev();list1.prev()){
+		console.log(list1.getElement());
+	}
 	</script>
 	</body>
 </html>
