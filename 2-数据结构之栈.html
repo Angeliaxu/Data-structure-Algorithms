@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+/*
+ 	1.栈是一种高效的数据结构，数据只能在栈顶添加或者删除，这样操作很快，栈是一种后入先出（LIFO）的数据结构。
+ 	2.对栈的两种操作就是入栈（push）和出栈（pop)
+ 	3.pop()方法可以访问栈顶元素，但是调用该方法，会永久删除栈顶元素，通过peek（）返回栈顶元素，而不删除
+ 	4.使用变量top：当向栈内压入元素时，top变大，栈内弹出元素时，变量减小
+ 	5.clear（）方法：清除栈内所有元素。
+ 	6.length：记录栈内元素的个数
+ 	7.empty：表示栈内是否还含有元素。
+ * 
+ * 采用数组作为存储数据的底层数据结构
+ * */
+	function stack(){
+		this.datastore=[];
+		this.top=0;
+		this.push=push;
+		this.pop=pop;
+		this.peek=peek;
+		this.length=length;
+		this.clear=clear;
+	}
+	//向栈中压入一个新元素，把元素保存在数组中变量top所对应的位置，然后top+1，指向数组下一个空位置
+	function push(element){
+		this.datastore[this.top]=element;
+		this.top++;
+	}
+	//返回栈顶元素，同时top值减1
+	function pop(){
+		return this.datastore[--this.top];
+	}
+	//返回数组第top-1个元素的位置，即栈顶元素
+	function peek(){
+		return this.datastore[this.top-1];
+	}
+	//length方法通过返回变量top的值方式返回栈内元素的个数
+	function length(){
+		return this.top;
+	}
+	//将变量top的值设为0，情况一个栈
+	function clear(){
+		this.top=0;
+	}
+//测试
+
+var s=new stack();
+s.push('gege');
+console.log(s.datastore);
+console.log(s.length())
+console.log(s.top);
+console.log(s.pop())
+console.log(s.top);
+
+		</script>
+	</body>
+</html>
