@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 	树是一种非线性结构，以分层的方式存储数据，树被用来存储具有层级关系的数据。
+			 	二叉树上进行查找非常快，为二叉树添加或删除元素也非常快。
+			 * 	没有任何子节点的树称为叶子节点.
+			 * 
+			 * */
+			//实现二叉查找树，相对较小的值保存在左节点中，较大的值保存在右节点中，这一特性使得查找效率非常高（对于数值型和非数据型数据，单词或者字符串）
+			function Node(data,left,right){
+				this.data=data;
+				this.right=right;
+				this.left=left;
+				this.show=show;
+			}
+			function show(){
+				return this.data;
+			}
+			/*
+			 	1.设根节点为当前节点。 
+			 	2.如果待插入节点保存的数据小于当前节点，则设新的当前节点为原节点
+			 	的左节点，反之，执行第四步。
+			 	3.如果当前的左节点为null，就将新的节点插入这个位置，退出循环；反之，
+			 	继续执行下一次循环。
+			 	4.设新的当前节点为原节点的右节点。
+			 	5.如果当前节点的右节点为null，那就将新的节点插入这个位置，退出循环，反之
+			 	继续执行下一次循环。
+			 */
+			
+			//实现二叉树插入节点
+			function BST(){
+				this.root=null;
+				this.insert=insert;
+//				this.inorder=inorder;
+			}
+			function insert(data){
+				//每次进来都实例化实例化一个根节点
+				var n=new Node(data,null,null);
+				if(this.root==null){
+					//如果没有根节点，设置新的根节点，this.root拥有Node的属性和方法
+					this.root=n;
+				}else{
+					//有根节点，遍历插入数值
+					var current=this.root;
+					console.log(current);
+					var parent;
+					while(true){
+						parent=current;
+							if(data<current.data){
+								current=current.left;
+								if(current==null){
+									parent.left=n;
+									break;
+								}
+							}else{
+								current=current.right;
+								if(current==null){
+									parent.right=n;
+									break;
+								}
+							}
+					}
+				}
+			}
+			var m=new BST();
+			m.insert(1);
+			m.insert(-1);
+			m.insert(2);
+			m.insert(3);
+			m.insert(1);
+//			m.insert(2);
+			console.log(m);
+		</script>
+	</body>
+</html>
