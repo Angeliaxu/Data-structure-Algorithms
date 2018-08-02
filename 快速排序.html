@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+        // 定义一个数组[4,2,1,8,3,5,7]
+        /* 快排的思想是：随机选取一个数，一般选择数组第一个，第一个数与后面的元素--做比较，小的往左边放，大的往右边放。
+        是个递归过程，再把左边或者右边的数进行递归*/
+
+        function quickSort(arr){
+          
+            var leftArr=[],rightArr=[];
+      
+            arr.filter((item)=>{
+                if(item<arr[0]){
+                    leftArr.push(item)
+                }else{
+                    rightArr.push(item)
+                }
+            })
+            if(arr.length<=1){
+                return arr
+            }
+            return quickSort(leftArr).concat(quickSort(rightArr))
+            
+        }   
+        console.log(quickSort([4,2,1,8,3,5,7]));
+        // console.log();
+    </script>
+</body>
+</html>
