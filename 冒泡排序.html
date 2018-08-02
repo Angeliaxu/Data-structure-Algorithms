@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+        // 定义一个数组[4,2,1,8,3,5,7]
+        /* 冒泡的思想是：第一轮第一个数一次和后面的数比较，如果后面的数大于前面的数，两个位置交换，此轮排序结束，开启下一轮排序*/
+
+        function quickSort(arr){
+            var temp;
+            for(var i=0;i<arr.length;i++){
+                for(var y =i+1;y<arr.length-1;y++){
+                    if(arr[y]<arr[i]){
+                        temp =arr[i];
+                        arr[i]=arr[y];
+                        arr[y]=temp
+                    }
+                }
+            }
+            return arr;
+        }   
+    
+        console.log(quickSort([4,2,1,8,3,5,7]));
+    </script>
+</body>
+</html>
