@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 查找和为指定数值的不重复元素集合
+      const arr = [0, -1, -2, 1, 4, 1];
+      function threeSum($1) {
+        let result = [];
+        let map = new Map();
+        // 其实就相当于外层循环指定一个值，再去循环去找其他两个值
+        for (let i = 0; i < $1.length; i++) {
+          let first = $1[i];
+          for (let j = i + 1; j < $1.length; j++) {
+            let second = 0 - first - $1[j];
+            // 循坏到后面利用差值去map里面查找之前是否保存的有值
+            if (map.has(second)) {
+              result.push([first, second, $1[j]]);
+            }
+            // 每次循坏都把当前的这个值放进去
+            map.set($1[j], $1[j]);
+          }
+          map.clear();
+        }
+        return result;
+      }
+
+      console.log(threeSum(arr));
+    </script>
+  </body>
+</html>

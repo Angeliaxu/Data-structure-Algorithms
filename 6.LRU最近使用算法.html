@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        LRU算法：最近未使用算法，在缓存一定的情况下，加入新的东西置换出最近未使用的页面
+        
+      */
+
+      function LRU(size) {
+        this.map = new Map();
+        this.size = size;
+      }
+      LRU.prototype.add = function (key, value) {
+        if (this.map.size > this.size) {
+          this.map.delete(this.map.next().value);
+        }
+        this.map.set(key, value);
+      };
+      LRU.prototype.get = function (key) {
+        if (!this.map.has(key)) {
+          return -1;
+        }
+        let value = this.map.get(key);
+        this.map.delete(key);
+        this.map.set(ket, value);
+        return value;
+      };
+    </script>
+  </body>
+</html>

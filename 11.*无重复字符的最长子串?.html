@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        输入: "abcabcbb"
+        输出: 3
+        解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
+      */
+      /*
+        输入: "bbbbb"
+        输出: 1
+        解释: 因为无重复字符的最长子串是 "b"，所以其长度为 1。
+       */
+      /*
+        输入: "pwwkew"
+        输出: 3
+        解释: 因为无重复字符的最长子串是 "wke"，所以其长度为 3。
+            请注意，你的答案必须是 子串 的长度，"pwke" 是一个子序列，不是子串。
+      */
+
+      // function getMaxStrLen(str) {
+      //   let map = [];
+      //   let max = 0;
+      //   for (let i = 0; i < str.length; i++) {
+      //     if (!map.includes(str[i])) {
+      //       map.push(str[i]);
+      //       max = map.length;
+      //     } else {
+      //       if (map.length > max) {
+      //         max = map.length;
+      //       }
+      //       map.shift();
+      //     }
+      //   }
+      //   return max;
+      // }
+      let a = "abcabbcbb";
+      let b = "bbbbb";
+      let c = "pwwkew";
+      let d = "123456";
+      var lengthOfLongestSubstring = function (s) {
+        let map = new Map(),
+          max = 0;
+        for (let i = 0, j = 0; j < s.length; j++) {
+          if (map.has(s[j])) {
+            i = Math.max(map.get(s[j]) + 1, i);
+          }
+          max = Math.max(max, j - i + 1);
+          map.set(s[j], j);
+        }
+        return max;
+      };
+
+      console.log(lengthOfLongestSubstring(a));
+      // console.log(lengthOfLongestSubstring(b));
+      // console.log(lengthOfLongestSubstring(c));
+      // console.log(lengthOfLongestSubstring(d));
+    </script>
+  </body>
+</html>

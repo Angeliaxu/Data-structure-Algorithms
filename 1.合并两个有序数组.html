@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const arr1 = [2];
+      const arr2 = [1];
+      var merge = function (nums1, m, nums2, n) {
+        let len = m + n - 1;
+        m = m - 1;
+        n = n - 1;
+        while (n >= 0) {
+          if (m < 0) {
+            nums1[len--] = nums2[n--];
+            continue;
+          }
+          if (nums1[m] < nums2[n]) {
+            nums1[len--] = nums2[n--];
+          } else {
+            nums1[len--] = nums1[m--];
+          }
+        }
+      };
+      merge(arr1, 1, arr2, 1);
+      console.log(arr1);
+    </script>
+  </body>
+</html>

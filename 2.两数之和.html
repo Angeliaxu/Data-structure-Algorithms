@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const nums = [2, 7, 11, 15, 1, 8];
+      const target = 9;
+      function getSumIndex(arr, target) {
+        const mapIndex = new Map();
+        let result = [];
+        let a = 0;
+        for (let i = 0; i < nums.length; i++) {
+          a = target - nums[i];
+          if (mapIndex.has(a)) {
+            result.push([i, mapIndex.get(a)]);
+            // continue;
+            // return [i, mapIndex.get(a)];
+          }
+          mapIndex.set(nums[i], i);
+        }
+        return result;
+      }
+      console.log(getSumIndex(nums, target));
+    </script>
+  </body>
+</html>

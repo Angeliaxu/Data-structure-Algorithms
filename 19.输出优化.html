@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+
+        输出以下代码运行结果，为什么？如果希望每隔 1s 输出一个结果，应该如何改造？注意不可改动 square 方法
+
+        同时输出1，4，9
+      */
+
+      const list = [1, 2, 3];
+
+      const square = (num) => {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve(num * num);
+          }, 1000);
+        });
+      };
+
+      if (!Array.prototype.forEachs) {
+        Array.prototype.forEachs = function (callback, thisArg) {
+          var T, k;
+          if (this == null) {
+            throw new TypeError(" this is null or not defined");
+          }
+
+          var O = Object(this);
+          var len = O.length >>> 0;
+
+          if (typeof callback !== "function") {
+            throw new TypeError(callback + " is not a function");
+          }
+
+          if (arguments.length > 1) {
+            T = thisArg;
+          }
+          k = 0;
+
+          while (k < len) {
+            var kValue;
+            if (k in O) {
+              kValue = O[k];
+              callback.call(T, kValue, k, O);
+            }
+            k++;
+          }
+        };
+      }
+
+      // 原因：使用 promise 或 async 函数作为 forEach() 等类似方法的 callback 参数并不会等待异步的执行,forEach的回调在while循环执行
+      function test() {
+        list.forEachs(async (x) => {
+          const res = await square(x);
+          console.log(res);
+        });
+      }
+
+      // 解决办法一：
+      /* async function test() {
+        let i = 0;
+        while (i < list.length) {
+          const res = await square(i);
+          console.log(res);
+          i++;
+        }
+        // for (let i = 0; i < list.length; i++) {
+        //   const res = await square(i);
+        //   console.log(res);
+        // }
+      } */
+
+      test();
+
+      /*
+        setTimeout按照间隔打印
+      */
+      // const list = [1, 2, 3];
+      // const square = (num) => {
+      //   setTimeout(
+      //     (num) => {
+      //       console.log(num * num);
+      //     },
+      //     1000 * num,
+      //     num
+      //   );
+      // };
+
+      // function test() {
+      //   for (let i = 0; i < list.length; i++) {
+      //     square(i + 1);
+      //   }
+      // }
+
+      // test();
+    </script>
+  </body>
+</html>

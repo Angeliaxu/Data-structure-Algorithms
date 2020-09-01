@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var nums1 = [1, 2, 2, 1];
+      var nums2 = [2, 2];
+      var nums3 = [4, 9, 5];
+      var nums4 = [9, 4, 9, 8, 4];
+      function intersect($1, $2) {
+        const map = new Map();
+        for (let i = 0; i < $1.length; i++) {
+          if ($2.includes($1[i]) && !map.has($1[i])) {
+            map.set($1[i], $1[i]);
+          }
+        }
+        return map;
+      }
+      console.log(intersect(nums1, nums2));
+      console.log(intersect(nums3, nums4));
+    </script>
+  </body>
+</html>

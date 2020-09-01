@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /* 
+      设计一个支持 push ，pop ，top 操作，并能在常数时间内检索到最小元素的栈。
+      push(x) —— 将元素 x 推入栈中。
+      pop() —— 删除栈顶的元素。
+      top() —— 获取栈顶元素。
+      getMin() —— 检索栈中的最小元素。
+
+      示例:
+        MinStack minStack = new MinStack();
+        minStack.push(-2);
+        minStack.push(0);
+        minStack.push(-3);
+        minStack.getMin();   --> 返回 -3.
+        minStack.pop();
+        minStack.top();      --> 返回 0.
+        minStack.getMin();   --> 返回 -2.
+    */
+      class GetMin {
+        constructor() {
+          this.arr = [];
+          this.min = null;
+        }
+        push(args) {
+          if (!this.arr.length) {
+            this.min = args;
+          }
+          this.arr.push(args);
+          this.min = Math.min(this.min, args);
+        }
+        pop() {
+          let pop = this.arr.pop();
+          this.min = Math.min(...this.arr);
+          return pop;
+        }
+        top() {
+          if (!this.arr.length) {
+            return null;
+          }
+          return this.arr[arr.length - 1];
+        }
+        getMin() {
+          return this.min;
+        }
+      }
+      const stack = new GetMin();
+      stack.push(0);
+      console.log(stack.getMin());
+      stack.push(1);
+      console.log(stack.getMin());
+    </script>
+  </body>
+</html>

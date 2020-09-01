@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        输入："abbbaca"
+        输出："ca"
+        解释："abbbaca" => "aaca"=>"ca"
+      */
+      function getString(str) {
+        let i = 0;
+        let stack = [];
+        while (i < str.length) {
+          let top = stack[stack.length - 1];
+          if (str[i] === top) {
+            stack.pop();
+            while (str[i] === top) i++;
+          } else {
+            stack.push(str[i]);
+            i++;
+          }
+        }
+        return stack.join("");
+      }
+
+      /**
+       * 删除字符串中出现次数 >= 2 次的相邻字符
+       * @param {string}s
+       */
+      let str = "abbbaca";
+      function removeDuplicate(s) {
+        debugger;
+        const stack = []; // Space: O(n)
+        let top;
+        let next;
+        let i = 0;
+        while (i < s.length) {
+          top = stack[stack.length - 1];
+          next = s[i];
+          if (next === top) {
+            stack.pop();
+            // 这里才是精华，一直比较s[i]与栈顶元素，遇见不同的才往里面push，这样就解决了我一直的疑惑，怎么才能pop之后不push重复的字段，到最后都不push
+            while (s[i] === top) i += 1;
+          } else {
+            stack.push(next);
+            i += 1;
+          }
+        }
+        return stack.join(""); // Time: O(n)
+      }
+
+      console.log(getString(str), "str");
+    </script>
+  </body>
+</html>

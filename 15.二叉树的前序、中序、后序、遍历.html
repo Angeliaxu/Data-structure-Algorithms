@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /* 
+        给定一个二叉树，返回它的 前序 遍历。
+        输入: [1,null,2,3]
+            1
+              \
+              2
+              /
+            3
+
+        输出: [1,2,3]
+        进阶: 递归算法很简单，你可以通过迭代算法完成吗？
+        二叉树遍历：根据根节点来遍历
+        前序：
+      */
+
+      // 前序遍历
+      function preTraverseTree(root) {
+        let list = [];
+        function fn(node) {
+          if (node.value) {
+            list.push(node.value);
+          }
+          fn(node.left);
+          fn(node.right);
+        }
+        fn(root);
+        return list;
+      }
+      // 中序遍历
+
+      function middleTraverseTree(root) {
+        let list = [];
+        function fn(node) {
+          fn(root.left);
+          list.push(node.value);
+          fn(root.right);
+        }
+        fn(root);
+        return list;
+      }
+
+      // 后序遍历
+      // 后序遍历
+      var postorderTraversal = function (root) {
+        let result = [];
+        var postorderTraversalNode = (node) => {
+          if (node) {
+            // 先遍历左子树
+            postorderTraversalNode(node.left);
+            // 再遍历右子树
+            postorderTraversalNode(node.right);
+            // 最后根节点
+            result.push(node.val);
+          }
+        };
+        postorderTraversalNode(root);
+        return result;
+      };
+    </script>
+  </body>
+</html>

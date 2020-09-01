@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function fer(n) {
+        let arr = [1, 1, 2];
+        let i = 2;
+        while (i <= n) {
+          arr[i] = arr[i - 2] + arr[i - 1];
+          i++;
+        }
+        arr = arr.slice(0, n);
+
+        return arr;
+      }
+      console.log(fer(6));
+
+      /*
+          登台阶问题：动态规划，把复杂问题简单化。一次只能跨一步或者两步，复杂的问题分解到最后其实就是1，2的问题
+          例子：5步台阶，假设最后一步我可以跨一步或者两步，那么就是
+          4，    3=5+3
+        3， 2 =3+2 2 ，1=2+1
+        1，2 = 3
+        所以5步台阶到最后就是8种跨法，其实也是斐波那契额数列
+      */
+    </script>
+  </body>
+</html>
