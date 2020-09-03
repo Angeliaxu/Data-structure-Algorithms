@@ -7,13 +7,17 @@
   </head>
   <body>
     <script>
+      /* 
+        回溯算法的入门问题
+      */
       var permute = function (nums) {
+        debugger;
         let len = nums.length;
         if (len === 0) return [[]];
         let res = [];
         let path = []; //维护动态数组
         let used = {}; //保存已存在的元素
-        let dfs = function (arr, len, depth, path, used, res) {
+        let dfs = function (arr, len, depth, res) {
           if (len === depth) {
             res.push([...path]);
             return;
@@ -22,16 +26,33 @@
             if (!used[i]) {
               path.push(arr[i]);
               used[i] = true;
-              dfs(arr, len, depth + 1, path, used, res);
+              dfs(arr, len, depth + 1, res);
               //状态回溯
               used[i] = false;
               path.pop();
             }
           }
         };
-        dfs(nums, len, 0, path, used, res);
+        dfs(nums, len, 0, res);
         return res;
       };
+      let num = [1, 2, 3];
+      console.log(permute(num));
+      /* 
+        第一次for循坏
+        i=1 path=[1] used[1]=false
+          接着递归for循坏
+          i=1，不进去
+          i=2,进去，path=[1，2],，used[2]=false
+            接着递归for循坏
+            i=1，不进去
+            i=2,不进去
+            i=3,进去，结束递归 ，used[3]=false
+          i=3,进去，path=[1，3] used[3]=false
+            接着递归for循坏
+            i=1，不进去
+            i=2,进去，结束递归 used[2]=false
+      */
     </script>
   </body>
 </html>
