@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /* 
+        模拟实现 new 操作符
+        new 操作符做了哪些操作：
+          1、上下文指向实例
+          2、返回一个对象
+          3、原型链的指向
+      */
+
+      function newObj(fn, ...args) {
+        const obj = Object.create(fn.prototype);
+        const result = fn.apply(obj, args);
+        return Object.prototype.toString.call(res) === "[object Object]"
+          ? res
+          : newObj;
+      }
+    </script>
+  </body>
+</html>

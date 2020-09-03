@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var permute = function (nums) {
+        let len = nums.length;
+        if (len === 0) return [[]];
+        let res = [];
+        let path = []; //维护动态数组
+        let used = {}; //保存已存在的元素
+        let dfs = function (arr, len, depth, path, used, res) {
+          if (len === depth) {
+            res.push([...path]);
+            return;
+          }
+          for (let i = 0; i < len; i++) {
+            if (!used[i]) {
+              path.push(arr[i]);
+              used[i] = true;
+              dfs(arr, len, depth + 1, path, used, res);
+              //状态回溯
+              used[i] = false;
+              path.pop();
+            }
+          }
+        };
+        dfs(nums, len, 0, path, used, res);
+        return res;
+      };
+    </script>
+  </body>
+</html>
