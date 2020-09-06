@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        原理：谁调用我this指向谁
+       */
+      function apply(obj, args) {
+        let fn = Symbol("fn"); // 生成唯一的属性
+        obj = obj || ""; // 没有传this指向就是window
+        obj[fn] = this; //this是指当前调用apply的函数
+        const result = obj.fn(args); // 执行调用函数
+        delete obj[fn];
+        return result; // 返回结果
+      }
+    </script>
+  </body>
+</html>
