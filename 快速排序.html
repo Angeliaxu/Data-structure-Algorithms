@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-    
-        // 定义一个数组[4,2,1,8,3,5,7]
-        /* 快排的思想是：随机选取一个数，一般选择数组第一个，第一个数与后面的元素--做比较，小的往左边放，大的往右边放。
+      // 定义一个数组[4,2,1,8,3,5,7]
+      /* 快排的思想是：随机选取一个数，一般选择数组第一个，第一个数与后面的元素--做比较，小的往左边放，大的往右边放。
         是个递归过程，再把左边或者右边的数进行递归
         
         ps:很久没有看递归了，都快忘了递归是啥样的了，趁机补补吧
         */
-        function quickSort(arr){
-            console.log(arr);
-            if(arr.length<=1){
-                return arr;
-            }
-            let leftArr=[],rightArr=[],mid = arr[0];
-            arr.forEach((item)=>{
-                if(item<arr[0]){
-                    leftArr.push(item)
-                }else if (item > arr[0]){
-                    rightArr.push(item)
-                }
-            })
-            let l = quickSort(leftArr)
-            l.push(arr[0])  ;
-            // console.log(l.concat(quickSort(rightArr)))
-            return l.concat(quickSort(rightArr))
-            
-        }   
-        console.log(quickSort([4,2,1,8,3,5,7]));
-        // console.log();
+      function quickSort(arr) {
+        debugger;
+        console.log(arr);
+        if (arr.length <= 1) {
+          return arr;
+        }
+        let leftArr = [],
+          rightArr = [],
+          mid = arr[0];
+        arr.forEach((item) => {
+          if (item < arr[0]) {
+            leftArr.push(item);
+          } else if (item > arr[0]) {
+            rightArr.push(item);
+          }
+        });
+        let l = quickSort(leftArr);
+        l.push(arr[0]);
+        // console.log(l.concat(quickSort(rightArr)))
+        return l.concat(quickSort(rightArr));
+      }
+      console.log(quickSort([4, 2, 1, 8, 3, 5, 7]));
+      // console.log();
     </script>
-</body>
+  </body>
 </html>
