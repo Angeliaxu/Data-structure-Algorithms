@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    /**
+   * @param {string} s
+   * @return {number}
+   * "III"
+   */
+    var romanToInt = function (s) {
+      const map = new Map([
+        ['I', 1],
+        ['V', 5],
+        ['X', 10],
+        ['L', 50],
+        ['C', 100],
+        ['D', 500],
+        ['M', 1000]
+      ])
+      const roman = ['I', 'V', 'X', 'L', 'C', 'D', 'M'];
+      const special = ['I', 'X', 'C'];
+      let i = 0;
+      let prev = s[i];
+      let sum = map.get(prev);
+      while (i < s.length - 1) {
+        i++;
+        let current = s[i];
+        let result = 0;
+        if (special.includes(prev)) {
+          if (roman.indexOf(current) - roman.indexOf(prev) == 2 || roman.indexOf(current) - roman.indexOf(prev) == 1) {
+            result = map.get(current) - map.get(prev) * 2;
+          } else {
+            result = map.get(current);
+          }
+        } else {
+          result = map.get(current);
+        }
+        prev = current;
+        sum += result;
+      }
+
+      return sum;
+    };
+    console.log(romanToInt("IV")) 
+  </script>
+</body>
+
+</html>
