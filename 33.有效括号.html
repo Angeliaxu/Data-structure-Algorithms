@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var isValid = function (s) {
+        let arr = [];
+        let len = s.length;
+        if (len % 2) {
+          return false;
+        }
+        let left = ['(', '[', '{'];
+        let right = [')', ']', '}'];
+        for (let i = 0; i < len ; i++) {
+          if (left.includes(s[i])) {
+            arr.push(s[i])
+          }
+          console.log(s[i])
+          if (right.includes(s[i])) {
+            switch (s[i]) {
+              case ")": {
+                if (arr.pop() !== "(") return false
+                break;
+              }
+              case "]": {
+                console.log(99999)
+                if (arr.pop() !== "[") return false
+                break;
+              }
+              case "}": {
+                if (arr.pop() !== "{") return false
+                break;
+              }
+            }
+          }
+        }
+        return true
+      };
+      console.log(isValid("(]"))
+
+  </script>
+</body>
+</html>

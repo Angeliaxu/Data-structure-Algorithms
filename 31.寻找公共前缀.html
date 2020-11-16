@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    // var longestCommonPrefix = function (strs) {
+    //     let maxStr = strs[0];
+    //     let minStr = strs[0];
+    //     for (let i = 1; i < strs.length; i++) {
+    //       if (strs[i] > maxStr) {
+    //         maxStr = strs[i];
+    //       }
+    //       if (strs[i] < minStr) {
+    //         minStr = strs[i];
+    //       }
+    //     }
+    //     let commonStr = minStr[0]
+    //     for (let i = 0; i < minStr.length; i++) {
+    //       if (maxStr[i]=== commonStr[i]) {
+    //         commonStr += minStr[i+1];
+    //         continue
+    //       } else {
+            
+    //         commonStr = commonStr.slice(0, commonStr.length - 1);
+    //         break
+    //       }
+    //     }
+    //     return commonStr;
+    //   };
+    //   console.log(longestCommonPrefix(["dog", "racecar", "car"]))
+
+   var longestCommonPrefix = function (strs) {
+      if (strs === null || strs.length === 0) return "";
+      if (strs.length === 1) return strs[0];
+      let min = 0,
+        max = 0;
+      for (let i = 1; i < strs.length; i++) {
+        if (strs[min] > strs[i]) min = i;
+        if (strs[max] < strs[i]) max = i;
+      }
+      for (let j = 0; j < strs[min].length; j++) {
+        if (strs[min].charAt(j) !== strs[max].charAt(j)) {
+          return strs[min].substring(0, j);
+        }
+      }
+      return strs[min];
+    };
+     
+     var longestCommonPrefix = function (strs) {
+        if (!strs.length) {
+          return ''
+        }
+        if (strs.length === 1) {
+          return strs[0]
+        }
+        let min = 0;
+        let max = 0;
+        for (let i = 1; i < strs.length; i++) {
+          if (strs[i] > strs[min]) max = i;
+          if (strs[i] < strs[max]) min = i;
+        }
+        for (let i = 0; i < strs[min].length; i++) {
+          if (strs[min][i] !== strs[max][i]) {
+            console.log(i)
+            return strs[min].substring(0, i);
+          }
+        }
+        return strs[min]
+      }
+     
+      console.log(longestCommonPrefix(["aba", "c", "b", "a", "ab"]));
+  </script>
+</body>
+</html>

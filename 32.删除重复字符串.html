@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var removeDuplicates = function (nums) {
+      debugger
+      let map = new Map();
+      for (let i = 0; i < nums.length - 1; i++) {
+        if (!map.get(nums[i])) {
+          map.set(nums[i], true)
+        } else {
+          nums.splice(i, 1);
+          i -= 1;
+        }
+      }
+      return nums.length;
+    };
+    let nums = [1, 1];
+    console.log(removeDuplicates(nums))
+  </script>
+</body>
+
+</html>
