@@ -65,7 +65,7 @@
           if (strs[i] < strs[max]) min = i;
         }
         for (let i = 0; i < strs[min].length; i++) {
-          if (strs[min][i] !== strs[max][i]) {
+          if (strs[min].charAt(j) !== strs[max].charAt(j)) {
             console.log(i)
             return strs[min].substring(0, i);
           }

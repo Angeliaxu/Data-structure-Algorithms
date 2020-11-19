@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const startDate = new Date('1970/01/01');
+    const endDate = new Date(new Date().toLocaleDateString()).getTime();
+    const gap =  Math.floor(((endDate - startDate.getTime()) / (1000 * 60 * 60 * 24))/7);
+    console.log(gap)
+    /**
+      1116 2654 秋晓
+      1123 2655 苗苗
+      1130 2656
+      1207 2657
+      1214 2658
+      1221 2659
+      1228 2660
+      0104 2661
+    */
+  </script>
+</body>
+</html>
